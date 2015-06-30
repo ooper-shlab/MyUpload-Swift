@@ -12,19 +12,8 @@
 		D70A1EC91AE255B000CD8FE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70A1EC71AE255B000CD8FE7 /* Main.storyboard */; };
 		D70A1ECB1AE255B000CD8FE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70A1ECA1AE255B000CD8FE7 /* Images.xcassets */; };
 		D70A1ECE1AE255B000CD8FE7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70A1ECC1AE255B000CD8FE7 /* LaunchScreen.xib */; };
-		D70A1EDA1AE255B100CD8FE7 /* MyUploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70A1ED91AE255B100CD8FE7 /* MyUploadTests.swift */; };
 		D7775B231AE70381000CF4FB /* OOPFormMultipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7775B221AE70381000CF4FB /* OOPFormMultipart.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D70A1ED41AE255B100CD8FE7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D70A1EB61AE255B000CD8FE7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D70A1EBD1AE255B000CD8FE7;
-			remoteInfo = MyUpload;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D70A1EBE1AE255B000CD8FE7 /* MyUpload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyUpload.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,7 +23,6 @@
 		D70A1EC81AE255B000CD8FE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D70A1ECA1AE255B000CD8FE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D70A1ECD1AE255B000CD8FE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D70A1ED31AE255B100CD8FE7 /* MyUploadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyUploadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70A1ED81AE255B100CD8FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70A1ED91AE255B100CD8FE7 /* MyUploadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUploadTests.swift; sourceTree = "<group>"; };
 		D7775B221AE70381000CF4FB /* OOPFormMultipart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OOPFormMultipart.swift; sourceTree = "<group>"; };
@@ -44,13 +32,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		D70A1EBB1AE255B000CD8FE7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D70A1ED01AE255B100CD8FE7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -75,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				D70A1EBE1AE255B000CD8FE7 /* MyUpload.app */,
-				D70A1ED31AE255B100CD8FE7 /* MyUploadTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,39 +119,18 @@
 			productReference = D70A1EBE1AE255B000CD8FE7 /* MyUpload.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D70A1ED21AE255B100CD8FE7 /* MyUploadTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D70A1EE01AE255B100CD8FE7 /* Build configuration list for PBXNativeTarget "MyUploadTests" */;
-			buildPhases = (
-				D70A1ECF1AE255B100CD8FE7 /* Sources */,
-				D70A1ED01AE255B100CD8FE7 /* Frameworks */,
-				D70A1ED11AE255B100CD8FE7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D70A1ED51AE255B100CD8FE7 /* PBXTargetDependency */,
-			);
-			name = MyUploadTests;
-			productName = MyUploadTests;
-			productReference = D70A1ED31AE255B100CD8FE7 /* MyUploadTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D70A1EB61AE255B000CD8FE7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = nagata_kobo;
 				TargetAttributes = {
 					D70A1EBD1AE255B000CD8FE7 = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					D70A1ED21AE255B100CD8FE7 = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = D70A1EBD1AE255B000CD8FE7;
 					};
 				};
 			};
@@ -189,7 +148,6 @@
 			projectRoot = "";
 			targets = (
 				D70A1EBD1AE255B000CD8FE7 /* MyUpload */,
-				D70A1ED21AE255B100CD8FE7 /* MyUploadTests */,
 			);
 		};
 /* End PBXProject section */
@@ -202,13 +160,6 @@
 				D70A1EC91AE255B000CD8FE7 /* Main.storyboard in Resources */,
 				D70A1ECE1AE255B000CD8FE7 /* LaunchScreen.xib in Resources */,
 				D70A1ECB1AE255B000CD8FE7 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D70A1ED11AE255B100CD8FE7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,23 +176,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D70A1ECF1AE255B100CD8FE7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D70A1EDA1AE255B100CD8FE7 /* MyUploadTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D70A1ED51AE255B100CD8FE7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D70A1EBD1AE255B000CD8FE7 /* MyUpload */;
-			targetProxy = D70A1ED41AE255B100CD8FE7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D70A1EC71AE255B000CD8FE7 /* Main.storyboard */ = {
@@ -284,6 +219,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -351,6 +287,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MyUpload/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oopers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -362,41 +299,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MyUpload/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oopers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		D70A1EE11AE255B100CD8FE7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MyUploadTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyUpload.app/MyUpload";
-			};
-			name = Debug;
-		};
-		D70A1EE21AE255B100CD8FE7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MyUploadTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyUpload.app/MyUpload";
 			};
 			name = Release;
 		};
@@ -417,15 +321,6 @@
 			buildConfigurations = (
 				D70A1EDE1AE255B100CD8FE7 /* Debug */,
 				D70A1EDF1AE255B100CD8FE7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D70A1EE01AE255B100CD8FE7 /* Build configuration list for PBXNativeTarget "MyUploadTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D70A1EE11AE255B100CD8FE7 /* Debug */,
-				D70A1EE21AE255B100CD8FE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

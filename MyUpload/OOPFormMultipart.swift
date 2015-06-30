@@ -11,7 +11,7 @@ import UIKit
 extension NSMutableData {
     private func append(string: String) {
         string.withCString {ptr in
-            self.appendBytes(ptr, length: count(string.utf8))
+            self.appendBytes(ptr, length: string.utf8.count)
         }
     }
 }
@@ -38,17 +38,17 @@ public class OOPFormMultipart {
         add(.Text(name: name, text: text))
     }
     
-    public func add<T: Printable>(value: T, name: String) {
+    public func add<T: CustomStringConvertible>(value: T, name: String) {
         add(.Text(name: name, text: value.description))
     }
     
     public func addImageAsJPEG(image: UIImage, name: String, filename: String, compressionQuality: CGFloat = 0.2) {
-        let data = UIImageJPEGRepresentation(image, compressionQuality)
+        let data = UIImageJPEGRepresentation(image, compressionQuality)!
         add(.Binary(name: name, data: data, filename: filename, contentType: "image/jpeg"))
     }
     
     public func addImageAsPNG(image: UIImage, name: String, filename: String) {
-        let data = UIImagePNGRepresentation(image)
+        let data = UIImagePNGRepresentation(image)!
         add(.Binary(name: name, data: data, filename: filename, contentType: "image/png"))
     }
     
@@ -57,7 +57,7 @@ public class OOPFormMultipart {
     }
     
     private func generateBody() -> NSData {
-        var bodyData = NSMutableData()
+        let bodyData = NSMutableData()
         
         for part in parts {
             bodyData.append("--\(boundary)\r\n") // start of part

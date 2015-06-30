@@ -27,12 +27,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func selectImage(AnyObject) {
         let picker = UIImagePickerController()
         picker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-        picker.mediaTypes = [kUTTypeImage]
+        picker.mediaTypes = [kUTTypeImage as String]
         picker.delegate = self
         self.presentViewController(picker, animated: true, completion: nil)
     }
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         var sentImage: UIImage
         if let image = info[UIImagePickerControllerEditedImage] as! UIImage? {
             sentImage = image
@@ -40,7 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             sentImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         }
         self.postImage(SERVER_URL, image: sentImage) {succeeded, msg in
-            println(msg)
+            print(msg)
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -60,13 +60,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let task = session.dataTaskWithRequest(request) {data, response, error in
             if (error == nil) {
-                let msg = NSString(data: data, encoding: NSUTF8StringEncoding)! as String
+                let msg = NSString(data: data!, encoding: NSUTF8StringEncoding)! as String
                 completionHandler?(succeeded: true, msg: msg)
             } else {
                 completionHandler?(succeeded: false, msg: error!.description)
             }
         }
-        task.resume()
+        task!.resume()
         
     }
 }
