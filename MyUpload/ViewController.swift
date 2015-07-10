@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func selectImage(AnyObject) {
+    @IBAction func selectImage(_: AnyObject) {
         let picker = UIImagePickerController()
         picker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
         picker.mediaTypes = [kUTTypeImage as String]
