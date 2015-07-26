@@ -66,7 +66,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 completionHandler?(succeeded: false, msg: error!.description)
             }
         }
-        task!.resume()
+        task.resume()
         
     }
 }
