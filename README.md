@@ -6,6 +6,6 @@ Created by OOPer in cooperation with shlab.jp, on 2015/4/22.
 ===========================================================================
 BUILD REQUIREMENTS:
 
-Xcode 7 beta 4, iOS SDK 9
+Xcode 7, iOS SDK 9
 
 ===========================================================================
