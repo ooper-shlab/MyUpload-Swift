@@ -3,6 +3,7 @@
 //  MyUpload
 //
 //  Created by OOPer in cooperation with shlab.jp, on 2015/4/18.
+//  Updated for Swift 3 on 2016/12/29.
 //  See LICENSE.txt .
 //
 
@@ -26,13 +27,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func selectImage(_: AnyObject) {
         let picker = UIImagePickerController()
-        picker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        picker.sourceType = .savedPhotosAlbum
         picker.mediaTypes = [kUTTypeImage as String]
         picker.delegate = self
-        self.presentViewController(picker, animated: true, completion: nil)
+        self.present(picker, animated: true, completion: nil)
     }
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         var sentImage: UIImage
         if let image = info[UIImagePickerControllerEditedImage] as! UIImage? {
             sentImage = image
@@ -43,31 +44,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print(msg)
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
     }
-    func postImage(url : String, image: UIImage, completionHandler: ((succeeded: Bool, msg: String) -> ())?) {
-        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        let session = NSURLSession.sharedSession()
+    func postImage(_ url : String, image: UIImage, completionHandler: ((_ succeeded: Bool, _ msg: String) -> ())?) {
+        var request = URLRequest(url: URL(string: url)!)
+        let session = URLSession.shared
         
         let multipart = OOPFormMultipart()
         multipart.add(300_000, name: "MAX_FILE_SIZE") // for php servers.
         multipart.add("ooper-shlab", name: "name")
-        multipart.addImageAsJPEG(image, name: "image", filename: "image.jpg")
-        request.setMultipart(multipart)
+        multipart.add(image, format: .jpeg, name: "image", filename: "image.jpg")
+        request.set(multipart)
+        request.httpMethod = "POST"
         
-        let task = session.dataTaskWithRequest(request) {data, response, error in
-            if (error == nil) {
-                let msg = NSString(data: data!, encoding: NSUTF8StringEncoding)! as String
-                completionHandler?(succeeded: true, msg: msg)
+        let task = session.dataTask(with: request) {data, response, error in
+            if let error = error {
+                completionHandler?(false, error.localizedDescription)
             } else {
-                completionHandler?(succeeded: false, msg: error!.description)
+                let msg = data.flatMap{String(data: $0, encoding: .utf8)} ?? ""
+                completionHandler?(true, msg)
             }
         }
         task.resume()
-        
     }
 }
 

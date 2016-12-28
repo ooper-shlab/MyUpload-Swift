@@ -3,72 +3,91 @@
 //  MyUpload
 //
 //  Created by OOPer in cooperation with shlab.jp, on 2015/4/22.
+//  Updated for Swift 3 on 2016/12/29.
 //  See LICENSE.txt .
 //
 
 import UIKit
 
-extension NSMutableData {
-    private func append(string: String) {
-        string.withCString {ptr in
-            self.appendBytes(ptr, length: string.utf8.count)
-        }
+extension Data {
+    fileprivate mutating func append(_ string: String) {
+        self.append(string.data(using: .utf8)!)
     }
 }
 
 private enum OOPFormPart {
-    case Text(name: String, text: String)
-    case Binary(name: String, data: NSData, filename: String, contentType: String)
+    case text(name: String, text: String)
+    case binary(name: String, data: Data, filename: String, contentType: String)
 }
 
-public class OOPFormMultipart {
+public enum OOPFormImageFormat: String {
+    case jpeg = "image/jpeg"
+    case png = "image/png"
+}
+
+open class OOPFormMultipart {
     private var parts = [OOPFormPart]()
     
-    public let boundary = NSUUID().UUIDString
+    open let boundary = UUID().uuidString
     
-    public var contentType: String {
+    open var contentType: String {
         return "multipart/form-data; boundary=\"\(boundary)\""
     }
     
-    private func add(part: OOPFormPart) {
+    private func add(_ part: OOPFormPart) {
         parts.append(part)
     }
     
-    public func addText(text: String, name: String) {
-        add(.Text(name: name, text: text))
+//    open func addText(_ text: String, name: String) {
+//        add(.text(name: name, text: text))
+//    }
+    
+    open func add<T: CustomStringConvertible>(_ value: T, name: String) {
+        add(.text(name: name, text: value.description))
     }
     
-    public func add<T: CustomStringConvertible>(value: T, name: String) {
-        add(.Text(name: name, text: value.description))
+    open func add(_ image: UIImage, format: OOPFormImageFormat, name: String, filename: String, compressionQuality: CGFloat = 0.2) {
+        let data: Data
+        switch format {
+        case .jpeg:
+            data = UIImageJPEGRepresentation(image, compressionQuality)!
+        case .png:
+            data = UIImagePNGRepresentation(image)!
+        }
+        add(.binary(name: name, data: data, filename: filename, contentType: format.rawValue))
     }
     
-    public func addImageAsJPEG(image: UIImage, name: String, filename: String, compressionQuality: CGFloat = 0.2) {
-        let data = UIImageJPEGRepresentation(image, compressionQuality)!
-        add(.Binary(name: name, data: data, filename: filename, contentType: "image/jpeg"))
+//    open func addImageAsJPEG(_ image: UIImage, name: String, filename: String, compressionQuality: CGFloat = 0.2) {
+//        let data = UIImageJPEGRepresentation(image, compressionQuality)!
+//        add(.binary(name: name, data: data, filename: filename, contentType: "image/jpeg"))
+//    }
+//    
+//    open func addImageAsPNG(_ image: UIImage, name: String, filename: String) {
+//        let data = UIImagePNGRepresentation(image)!
+//        add(.binary(name: name, data: data, filename: filename, contentType: "image/png"))
+//    }
+    
+    open func add(_ data: Data, name: String, filename: String, contentType: String) {
+        add(.binary(name: name, data: data, filename: filename, contentType: contentType))
     }
     
-    public func addImageAsPNG(image: UIImage, name: String, filename: String) {
-        let data = UIImagePNGRepresentation(image)!
-        add(.Binary(name: name, data: data, filename: filename, contentType: "image/png"))
-    }
+//    open func addBinary(_ data: Data, name: String, filename: String, contentType: String) {
+//        add(data, name: name, filename: filename, contentType: contentType)
+//    }
     
-    public func addBinary(data: NSData, name: String, filename: String, contentType: String) {
-        add(.Binary(name: name, data: data, filename: filename, contentType: contentType))
-    }
-    
-    private func generateBody() -> NSData {
-        let bodyData = NSMutableData()
+    fileprivate func generateBody() -> Data {
+        var bodyData = Data()
         
         for part in parts {
             bodyData.append("--\(boundary)\r\n") // start of part
             switch part {
-            case let .Binary(name, data, filename, contentType):
+            case let .binary(name, data, filename, contentType):
                 // part headers for files
                 bodyData.append("Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(filename)\"\r\n")
                 bodyData.append("Content-Type: \(contentType)\r\n")
                 bodyData.append("\r\n") // empty line declares end of part header
-                bodyData.appendData(data) // part body
-            case let .Text(name, text):
+                bodyData.append(data) // part body
+            case let .text(name, text):
                 // part headers for text
                 bodyData.append("Content-Disposition: form-data; name=\"\(name)\"\"\r\n")
                 bodyData.append("\r\n") // empty line declares end of part header
@@ -83,10 +102,9 @@ public class OOPFormMultipart {
     }
 }
 
-extension NSMutableURLRequest {
-    func setMultipart(multipart: OOPFormMultipart) {
-        self.HTTPMethod = "POST"
-        self.HTTPBody = multipart.generateBody()
+extension URLRequest {
+    mutating func set(_ multipart: OOPFormMultipart) {
+        self.httpBody = multipart.generateBody()
         self.addValue(multipart.contentType, forHTTPHeaderField: "Content-Type")
     }
 }
