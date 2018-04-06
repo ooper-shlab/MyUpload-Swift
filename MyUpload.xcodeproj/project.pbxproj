@@ -12,6 +12,8 @@
 		D70A1EC91AE255B000CD8FE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70A1EC71AE255B000CD8FE7 /* Main.storyboard */; };
 		D70A1ECB1AE255B000CD8FE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70A1ECA1AE255B000CD8FE7 /* Images.xcassets */; };
 		D70A1ECE1AE255B000CD8FE7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D70A1ECC1AE255B000CD8FE7 /* LaunchScreen.xib */; };
+		D7412FB02077A56A00345BE7 /* OOPHttpContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7412FAF2077A56A00345BE7 /* OOPHttpContent.swift */; };
+		D7412FB22077A5B500345BE7 /* OOPFormUrlencoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7412FB12077A5B500345BE7 /* OOPFormUrlencoded.swift */; };
 		D7775B231AE70381000CF4FB /* OOPFormMultipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7775B221AE70381000CF4FB /* OOPFormMultipart.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		D70A1ECD1AE255B000CD8FE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D70A1ED81AE255B100CD8FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70A1ED91AE255B100CD8FE7 /* MyUploadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUploadTests.swift; sourceTree = "<group>"; };
+		D7412FAF2077A56A00345BE7 /* OOPHttpContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOPHttpContent.swift; sourceTree = "<group>"; };
+		D7412FB12077A5B500345BE7 /* OOPFormUrlencoded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OOPFormUrlencoded.swift; sourceTree = "<group>"; };
 		D7775B221AE70381000CF4FB /* OOPFormMultipart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OOPFormMultipart.swift; sourceTree = "<group>"; };
 		D7775B241AE7BAFE000CF4FB /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D7775B251AE7BAFE000CF4FB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				D70A1EC31AE255B000CD8FE7 /* AppDelegate.swift */,
 				D70A1EC51AE255B000CD8FE7 /* ViewController.swift */,
 				D7775B221AE70381000CF4FB /* OOPFormMultipart.swift */,
+				D7412FAF2077A56A00345BE7 /* OOPHttpContent.swift */,
+				D7412FB12077A5B500345BE7 /* OOPFormUrlencoded.swift */,
 				D70A1EC71AE255B000CD8FE7 /* Main.storyboard */,
 				D70A1ECA1AE255B000CD8FE7 /* Images.xcassets */,
 				D70A1ECC1AE255B000CD8FE7 /* LaunchScreen.xib */,
@@ -126,12 +132,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = nagata_kobo;
 				TargetAttributes = {
 					D70A1EBD1AE255B000CD8FE7 = {
 						CreatedOnToolsVersion = 6.3;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -171,7 +177,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7412FB02077A56A00345BE7 /* OOPHttpContent.swift in Sources */,
 				D7775B231AE70381000CF4FB /* OOPFormMultipart.swift in Sources */,
+				D7412FB22077A5B500345BE7 /* OOPFormUrlencoded.swift in Sources */,
 				D70A1EC61AE255B000CD8FE7 /* ViewController.swift in Sources */,
 				D70A1EC41AE255B000CD8FE7 /* AppDelegate.swift in Sources */,
 			);
@@ -207,14 +215,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -243,6 +259,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 			};
 			name = Debug;
 		};
@@ -254,14 +271,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -282,6 +307,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -295,7 +321,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oopers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -308,7 +335,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oopers.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

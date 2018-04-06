@@ -3,7 +3,6 @@
 //  MyUpload
 //
 //  Created by OOPer in cooperation with shlab.jp, on 2015/4/22.
-//  Updated for Swift 3 on 2016/12/29.
 //  See LICENSE.txt .
 //
 
@@ -25,7 +24,7 @@ public enum OOPFormImageFormat: String {
     case png = "image/png"
 }
 
-open class OOPFormMultipart {
+open class OOPFormMultipart: OOPHttpContent {
     private var parts = [OOPFormPart]()
     
     open let boundary = UUID().uuidString
@@ -37,10 +36,6 @@ open class OOPFormMultipart {
     private func add(_ part: OOPFormPart) {
         parts.append(part)
     }
-    
-//    open func addText(_ text: String, name: String) {
-//        add(.text(name: name, text: text))
-//    }
     
     open func add<T: CustomStringConvertible>(_ value: T, name: String) {
         add(.text(name: name, text: value.description))
@@ -57,25 +52,11 @@ open class OOPFormMultipart {
         add(.binary(name: name, data: data, filename: filename, contentType: format.rawValue))
     }
     
-//    open func addImageAsJPEG(_ image: UIImage, name: String, filename: String, compressionQuality: CGFloat = 0.2) {
-//        let data = UIImageJPEGRepresentation(image, compressionQuality)!
-//        add(.binary(name: name, data: data, filename: filename, contentType: "image/jpeg"))
-//    }
-//    
-//    open func addImageAsPNG(_ image: UIImage, name: String, filename: String) {
-//        let data = UIImagePNGRepresentation(image)!
-//        add(.binary(name: name, data: data, filename: filename, contentType: "image/png"))
-//    }
-    
     open func add(_ data: Data, name: String, filename: String, contentType: String) {
         add(.binary(name: name, data: data, filename: filename, contentType: contentType))
     }
     
-//    open func addBinary(_ data: Data, name: String, filename: String, contentType: String) {
-//        add(data, name: name, filename: filename, contentType: contentType)
-//    }
-    
-    fileprivate func generateBody() -> Data {
+    public func generateBody() -> Data {
         var bodyData = Data()
         
         for part in parts {
@@ -99,12 +80,5 @@ open class OOPFormMultipart {
         bodyData.append("--\(boundary)--") // end of all parts
         
         return bodyData
-    }
-}
-
-extension URLRequest {
-    mutating func set(_ multipart: OOPFormMultipart) {
-        self.httpBody = multipart.generateBody()
-        self.addValue(multipart.contentType, forHTTPHeaderField: "Content-Type")
     }
 }
